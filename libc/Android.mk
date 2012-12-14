@@ -607,6 +607,7 @@ ifeq ($(TARGET_ARCH),arm)
   ifeq ($(ARCH_ARM_HAVE_ARMV7A),true)
     libc_common_cflags += -DNEON_UNALIGNED_ACCESS -DNEON_MEMCPY_ALIGNMENT_DIVIDER=224
   endif
+<<<<<<< HEAD
 
   # Add in defines to activate SCORPION_NEON_OPTIMIZATION
   ifeq ($(TARGET_USE_SCORPION_BIONIC_OPTIMIZATION),true)
@@ -645,6 +646,8 @@ else # !arm
         libc_crt_target_cflags += -DUSE_SSSE3=1
     endif
   endif # x86
+=======
+>>>>>>> a5149c3... bionic: Make use of new memcpy, tweak settings
 endif # !arm
 
 ifeq ($(TARGET_ARCH),x86)
