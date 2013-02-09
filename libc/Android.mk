@@ -607,47 +607,6 @@ ifeq ($(TARGET_ARCH),arm)
   ifeq ($(ARCH_ARM_HAVE_ARMV7A),true)
     libc_common_cflags += -DNEON_UNALIGNED_ACCESS -DNEON_MEMCPY_ALIGNMENT_DIVIDER=224
   endif
-<<<<<<< HEAD
-
-  # Add in defines to activate SCORPION_NEON_OPTIMIZATION
-  ifeq ($(TARGET_USE_SCORPION_BIONIC_OPTIMIZATION),true)
-    libc_common_cflags += -DSCORPION_NEON_OPTIMIZATION
-    ifeq ($(TARGET_USE_SCORPION_PLD_SET),true)
-      libc_common_cflags += -DPLDOFFS=$(TARGET_SCORPION_BIONIC_PLDOFFS)
-      libc_common_cflags += -DPLDSIZE=$(TARGET_SCORPION_BIONIC_PLDSIZE)
-    endif
-  endif
-  ifeq ($(TARGET_HAVE_TEGRA_ERRATA_657451),true)
-    libc_common_cflags += -DHAVE_TEGRA_ERRATA_657451
-  endif
-  # Add in defines to activate KRAIT_NEON_OPTIMIZATION
-  ifeq ($(TARGET_USE_KRAIT_BIONIC_OPTIMIZATION),true)
-    libc_common_cflags += -DKRAIT_NEON_OPTIMIZATION
-    ifeq ($(TARGET_USE_KRAIT_PLD_SET),true)
-      libc_common_cflags += -DPLDOFFS=$(TARGET_KRAIT_BIONIC_PLDOFFS)
-      libc_common_cflags += -DPLDTHRESH=$(TARGET_KRAIT_BIONIC_PLDTHRESH)
-      libc_common_cflags += -DPLDSIZE=$(TARGET_KRAIT_BIONIC_PLDSIZE)
-      libc_common_cflags += -DBBTHRESH=$(TARGET_KRAIT_BIONIC_BBTHRESH)
-    endif
-  endif
-  ifeq ($(TARGET_USE_SPARROW_BIONIC_OPTIMIZATION),true)
-    libc_common_cflags += -DSPARROW_NEON_OPTIMIZATION
-  endif
-  ifeq ($(TARGET_CORTEX_CACHE_LINE_32),true)
-    libc_common_cflags += -DCORTEX_CACHE_LINE_32
-  endif
-else # !arm
-  ifeq ($(TARGET_ARCH),x86)
-    libc_crt_target_cflags :=
-    ifeq ($(ARCH_X86_HAVE_SSE2),true)
-        libc_crt_target_cflags += -DUSE_SSE2=1
-    endif
-    ifeq ($(ARCH_X86_HAVE_SSSE3),true)
-        libc_crt_target_cflags += -DUSE_SSSE3=1
-    endif
-  endif # x86
-=======
->>>>>>> a5149c3... bionic: Make use of new memcpy, tweak settings
 endif # !arm
 
 ifeq ($(TARGET_ARCH),x86)
