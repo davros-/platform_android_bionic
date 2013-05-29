@@ -459,4 +459,4 @@ ENTRY(pow)
 
 .Ltwoto1o4: @ 2^1/4
     .long       0x0a31b715, 0x3ff306fe
-END(pow_neon)
+END(pow)
